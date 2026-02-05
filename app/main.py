@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from app.routes import auth,tickets
 
-app = FastAPI(title='Student Support Ticket API', version='1.0.0')
+app = FastAPI(title='Student Support Ticket API', 
+              version='1.0.0')
 
 app.include_router(auth.router)
 app.include_router(tickets.router)
