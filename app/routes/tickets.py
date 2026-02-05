@@ -1,9 +1,11 @@
 from fastapi import APIRouter
+from app.schemas.ticket import TicketCreation , TicketUpdate
+
 
 router = APIRouter(prefix='/tickets')
 
 @router.post('')
-def create_ticket():
+def create_ticket(ticket_creation : TicketCreation):
     return {
         'success' : True,
         'data' : {},
@@ -29,7 +31,7 @@ def get_ticket_by_id(ticket_id : int):
     }
     
 @router.put('/{ticket_id}')
-def update_ticket(ticket_id : int):
+def update_ticket(ticket_id : int, ticket_update : TicketUpdate):
     return {
         'success' : True,
         'data' : {
