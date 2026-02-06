@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException , status
 from app.schemas.user import UserLogin
-from app.utils.jwt_handler import create_access_token, decode_access_token
+from app.utils.jwt_handler import create_access_token
 
 router = APIRouter()
 

@@ -9,3 +9,11 @@ class TicketCreation(BaseModel):
 class TicketUpdate(BaseModel):
     status : str
     
+class TicketResponse(BaseModel):
+    id: int
+    title: str
+    description: str
+    priority: str
+    status: str
+    created_by: str
+    

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from app.schemas.ticket import TicketCreation , TicketUpdate
+from app.schemas.ticket import TicketCreation , TicketUpdate, TicketResponse
 from app.utils.jwt_handler import decode_access_token
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
@@ -22,7 +22,7 @@ def get_current_user(
 
     return payload
 
-@router.post('')
+@router.post('', response_model=TicketResponse)
 def create_ticket(ticket : TicketCreation, user = Depends(get_current_user)):
     global ticket_counter
     
@@ -44,26 +44,18 @@ def create_ticket(ticket : TicketCreation, user = Depends(get_current_user)):
     ticket_counter = ticket_counter+1
     
     return {
-        'success' : True,
-        'data' : new_ticket,
-        'message' : 'Ticket created successfully'        
+        new_ticket     
     }
 
-@router.get('')
+@router.get('', response_model=TicketResponse)
 def get_tickets(user = Depends(get_current_user)):
     if user['role'] == 'support':
-        visible_ticket = TICKETS
-    else:
-        visible_ticket = [
-            ticket for ticket in TICKETS
-            if ticket['created_by'] == user['username']
-        ]
-        
-    return {
-        'success' : True,
-        'data' : visible_ticket,
-        'message' : 'Ticket Fetched Successfully'
-    }
+        return TICKETS
+            
+    return [
+        t for t in TICKETS
+        if t['created_by'] == user['username']
+    ]
     
 @router.get('/{ticket_id}')
 def get_ticket_by_id(ticket_id : int, user = Depends(get_current_user)):
@@ -79,11 +71,12 @@ def get_ticket_by_id(ticket_id : int, user = Depends(get_current_user)):
         'message' : 'Ticket Fetched Successfully'
     }
     
-@router.put('/{ticket_id}')
+@router.put('/{ticket_id}', response_model=TicketResponse)
 def update_ticket(
     ticket_id : int,
     ticket : TicketUpdate,
     user = Depends(get_current_user)):
+    
     if user["role"] != "support":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -100,11 +93,7 @@ def update_ticket(
         if t['id'] == ticket_id:
             t['status'] == ticket.status
         
-            return {
-                'success' : True,
-                'data' : t,
-                'message':'Ticket updated Successfully'
-            }
+            return t
     
     raise HTTPException(
         status_code=status.HTTP_400_BAD_REQUEST,
