@@ -1,8 +1,8 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class TicketCreation(BaseModel):
-    title : str
-    description : str
+    title : str = Field(...,min_length=3)
+    description : str = Field(...,min_length=5)
     priority : str
     
 
