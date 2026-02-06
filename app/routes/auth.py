@@ -6,6 +6,16 @@ router = APIRouter()
 
 # Temporary users DB
 USERS = {
+    "snakendran":{
+        "password" : "snake@123",
+        "role" : "support"
+    },
+    
+    "nafisa" : {
+        "password" : 'nafisa@123',
+        "role" : 'support'
+    },
+    
     "dhirajkumar": {
         "password": "Dhiraj@123",
         "role": "student"
