@@ -1,0 +1,17 @@
+2026-02-07 09:59:54.757 | INFO     | app.main:log_requests:22 - GET / | status=200
+2026-02-07 09:59:59.124 | INFO     | app.main:log_requests:22 - GET /docs | status=200
+2026-02-07 09:59:59.390 | INFO     | app.main:log_requests:22 - GET /openapi.json | status=200
+2026-02-07 10:00:32.456 | INFO     | app.routes.auth:login:62 - Login Successful | username=dhirajkumar
+2026-02-07 10:00:32.459 | INFO     | app.main:log_requests:22 - POST /login | status=200
+2026-02-07 10:01:40.259 | INFO     | app.routes.tickets:create_ticket:45 - Ticket created | user=dhirajkumar | ticket_id=1
+2026-02-07 10:01:40.264 | INFO     | app.main:log_requests:22 - POST /tickets | status=200
+2026-02-07 10:02:05.809 | INFO     | app.main:log_requests:22 - GET /tickets | status=200
+2026-02-07 10:02:27.493 | INFO     | app.main:log_requests:22 - PUT /tickets/1 | status=403
+2026-02-07 10:02:49.645 | INFO     | app.routes.auth:login:62 - Login Successful | username=snakendran
+2026-02-07 10:02:49.646 | INFO     | app.main:log_requests:22 - POST /login | status=200
+2026-02-07 10:03:29.368 | INFO     | app.routes.tickets:update_ticket:90 - Ticket updated | support=snakendran | ticket_id=1 | status=Resolved
+2026-02-07 10:03:29.369 | INFO     | app.routes.tickets:update_ticket:96 - Ticket updated | support=snakendran | ticket_id=1 | status=Resolved
+2026-02-07 10:03:29.371 | INFO     | app.main:log_requests:22 - PUT /tickets/1 | status=200
+2026-02-07 10:04:03.124 | INFO     | app.routes.auth:login:62 - Login Successful | username=dhirajkumar
+2026-02-07 10:04:03.125 | INFO     | app.main:log_requests:22 - POST /login | status=200
+2026-02-07 10:04:24.336 | INFO     | app.main:log_requests:22 - GET /tickets | status=200
