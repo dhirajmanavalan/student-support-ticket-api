@@ -2,6 +2,8 @@ from fastapi import APIRouter, HTTPException , status
 from app.schemas.user import UserLogin
 from app.utils.jwt_handler import create_access_token
 
+from app.utils.logger import logger
+
 router = APIRouter()
 
 # Temporary users DB
@@ -42,17 +44,22 @@ USERS = {
 @router.post("/login")
 def login(user: UserLogin):
     if user.username not in USERS:
+        logger.warning(f"Login failed | username = {user.username}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail='Invalid username or password'
-        )     
+        )    
+        
         
     if user.password != USERS[user.username]["password"]:
+        logger.warning(f"Login failed | username = {user.username, user.password}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid username or password"
         )
+        
              
+    logger.info(f"Login Successful | username={user.username}")
     access_token = create_access_token(
         data={
             'username':user.username,
