@@ -15,3 +15,11 @@
 2026-02-07 10:04:03.124 | INFO     | app.routes.auth:login:62 - Login Successful | username=dhirajkumar
 2026-02-07 10:04:03.125 | INFO     | app.main:log_requests:22 - POST /login | status=200
 2026-02-07 10:04:24.336 | INFO     | app.main:log_requests:22 - GET /tickets | status=200
+2026-02-09 11:41:53.905 | INFO     | app.main:log_requests:22 - GET / | status=200
+2026-02-09 11:41:54.085 | INFO     | app.main:log_requests:22 - GET /favicon.ico | status=404
+2026-02-09 11:43:00.958 | INFO     | app.main:log_requests:22 - GET /docs | status=200
+2026-02-09 11:43:01.229 | INFO     | app.main:log_requests:22 - GET /openapi.json | status=200
+2026-02-09 11:44:02.825 | INFO     | app.routes.auth:login:62 - Login Successful | username=dhirajkumar
+2026-02-09 11:44:02.826 | INFO     | app.main:log_requests:22 - POST /login | status=200
+2026-02-09 11:44:02.831 | INFO     | app.main:log_requests:22 - POST /tickets | status=422
+2026-02-09 11:54:28.989 | INFO     | app.main:log_requests:22 - GET / | status=200
